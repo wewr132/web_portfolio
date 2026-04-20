@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+
+    <main class="reviews-page">
+        <h2 class="section-title">Отзывы клиентов</h2>
+
+        <div class="reviews-grid">
+            {% for review in reviews %}
+                <article class="review-card">
+                    <header class="review-header">
+                        {% if review.user.avatar %}
+                            <img src="{{ review.user.avatar.url }}" alt="Аватар {{ review.user.username }}" class="review-avatar">
+                        {% else %}
+                            <div class="review-avatar-placeholder">
+                                {{ review.user.username|slice:":1"|upper }}
+                            </div>
+                        {% endif %}
+                        <div class="review-author-info">
+                            <span class="review-author-name">{{ review.user.username }}</span>
+                            <div class="review-rating">
+                                {% for i in "12345"|make_list %}
+                                    {% if forloop.counter <= review.reting %}★{% else %}☆{% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </header>
+                    <div class="review-body">
+                        <p>{{ review.text }}</p>
+                    </div>
+                </article>
+            {% empty %}
+                <p style="text-align: center; color: #777;">Пока нет отзывов. Будьте первыми!</p>
+            {% endfor %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <section class="review-form-container">
+            <h3>Оставить отзыв</h3>
+            <form action="{% url 'services:review_create' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <select name="reting" class="form-select-rating" required>
+                        <option value="" disabled selected>Выберите оценку</option>
+                        <option value="5">★★★★★ (5)</option>
+                        <option value="4">★★★★☆ (4)</option>
+                        <option value="3">★★★☆☆ (3)</option>
+                        <option value="2">★★☆☆☆ (2)</option>
+                        <option value="1">★☆☆☆☆ (1)</option>
+                    </select>
+                </div>
+
+                <textarea name="text" class="form-control-text" placeholder="Ваш отзыв..." required></textarea>
+
+                <button type="submit" class="btn-submit">Отправить</button>
+            </form>
+        </section>
+        {% endif %}
+
+    </main>
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="masonry-grid">
+    {% for photo in photos %}
+        <div class="masonry-item">
+            <img src="{{ photo.img.url }}" alt="{{ photo.title }}" class="photo-sharp lightbox-trigger">
+        </div>
+    {% empty %}
+        <p style="text-align: center; color: #666; padding: 40px;">Нет фотографий в этой категории.</p>
+    {% endfor %}
+</div>

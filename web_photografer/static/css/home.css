@@ -1,0 +1,242 @@
+/* ===========================
+   HERO-СЕКЦИЯ (ПОЛНОЭКРАННАЯ)
+   =========================== */
+.hero-parallax {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-parallax h1 {
+    color: white;
+    font-size: 4rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* ===========================
+   КОНТЕНТ, НАЕЗЖАЮЩИЙ НА HERO
+   =========================== */
+.home-content {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    width: 100%;
+    border-radius: 40px 40px 0 0;
+    margin-top: -60px;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    min-height: 50vh;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Ограничитель ширины контента */
+.content-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===========================
+   ФОТОГАЛЕРЕЯ (GRID)
+   =========================== */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* Для планшетов и небольших ноутбуков (от 768px): строго 2 колонки */
+@media (min-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Для широких экранов (от 1024px): строго 3 колонки (максимум) */
+@media (min-width: 1024px) {
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.photo-grid__img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.photo-grid__img:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+/* ===========================
+   СЕКЦИЯ "ОБО МНЕ" (FLEXBOX 55/45)
+   =========================== */
+.home-about {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+.about-flex {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 0 0 55%;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-content {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-content ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.about-content ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #888;
+}
+
+/* Адаптивность: перелом сетки на мобильных устройствах */
+@media (max-width: 992px) {
+    .about-flex {
+        flex-direction: column;
+    }
+    .about-image {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
+/* ===========================
+   КНОПКА-ССЫЛКА
+   =========================== */
+.btn-link {
+    display: inline-block;
+    border: 2px solid #007bff;
+    padding: 14px 36px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-link:hover {
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+/* ===========================
+   БЛОК CALL TO ACTION
+   =========================== */
+.home-contact-cta {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    text-align: center;
+    padding: 80px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.home-contact-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.home-contact-cta p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 40px;
+}
+
+/* Кнопка-призрак (Ghost Button) */
+.btn-outline {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #ffffff;
+    color: #2a2a2a;
+    text-decoration: none;
+}
+
+/* ===========================
+   АДАПТИВНОСТЬ
+   =========================== */
+@media (max-width: 768px) {
+    .hero-parallax h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-content {
+        margin-top: -40px;
+        padding: 40px 15px;
+    }
+
+    .block-rounded {
+        padding: 25px;
+    }
+
+    .about-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-grid .about-photo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .photo-grid .photo-card img {
+        width: 100%;
+    }
+}

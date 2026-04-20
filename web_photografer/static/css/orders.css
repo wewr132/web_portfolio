@@ -1,0 +1,163 @@
+/* ===========================
+   СТРАНИЦА ЗАКАЗОВ
+   =========================== */
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Контейнер списка — сетка кирпичиками */
+.orders-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 20px 40px;
+}
+
+/* Карточка заказа — вертикальная раскладка */
+.order-card {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Автор заказа */
+.order-author {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.order-id {
+    font-size: 0.85rem;
+    color: #999;
+    font-weight: 500;
+}
+
+.order-type {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.order-date {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* Статус заказа — badge (таблетка) */
+.order-status {
+    flex-shrink: 0;
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #f0f0f0;
+    color: #555;
+    white-space: nowrap;
+}
+
+/* Цвета для разных статусов */
+.status-badge.status-new {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-badge.status-in_progress {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.status-badge.status-compolete {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Сообщение при пустом списке */
+.orders-empty {
+    text-align: center;
+    color: #777;
+    padding: 40px 20px;
+    font-size: 1.1rem;
+}
+
+/* ===========================
+   ФОРМА СОЗДАНИЯ ЗАКАЗА
+   =========================== */
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.form-container label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-container p {
+    margin-bottom: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #555;
+}
+

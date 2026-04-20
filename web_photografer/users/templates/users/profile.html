@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+
+    <h1 class="page-title">Профиль пользователя</h1>
+
+    <div class="profile-container block-rounded">
+        {% if request.user.avatar %}
+            <div class="profile-avatar-wrapper">
+                <img src="{{ request.user.avatar.url }}" alt="Аватар" class="profile-avatar">
+            </div>
+        {% endif %}
+
+        <a href="{% url 'users:password_change' %}" class="btn-link-outline">Сменить пароль</a>
+
+        <form method="post" enctype="multipart/form-data" class="profile-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Сохранить</button>
+        </form>
+    </div>
+{% endblock %}

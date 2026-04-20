@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}">
+
+    <h1 class="page-title">Мои заказы</h1>
+
+    <div class="orders-container">
+        {% for order in orders %}
+            <div class="order-card block-rounded">
+                <span class="order-author">{{ order.user.username }}</span>
+                <span class="order-id">#{{ order.id }}</span>
+                <span class="order-type">{{ order.get_service_type_display }}</span>
+                <span class="order-date">{{ order.date|date:"d.m.Y H:i" }}</span>
+                <span class="order-status">
+                    <span class="status-badge status-{{ order.status|lower }}">{{ order.get_status_display }}</span>
+                </span>
+            </div>
+        {% empty %}
+            <p class="orders-empty">У вас пока нет заказов.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

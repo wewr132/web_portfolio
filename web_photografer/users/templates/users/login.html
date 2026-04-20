@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="max-width: 400px; margin: 0 auto; border: 1px solid black; padding: 20px;">
+        <h2>Вход в аккаунт</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+        </form>
+
+        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 15px; text-align: center;">
+            <p>Еще нет аккаунта?</p>
+            <a href="{% url 'users:register' %}" style="display: inline-block; padding: 10px 20px; border: 2px solid blue; text-decoration: none; font-weight: bold;">Зарегистрироваться</a>
+        </div>
+    </div>
+{% endblock %}

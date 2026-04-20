@@ -30,3 +30,5 @@ Thumbs.db
 # === Прочее ===
 *.bak
 *.swp
+passphrase
+passphrase.pub

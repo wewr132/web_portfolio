@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+
+    <h1 class="page-title text-center">Связь с фотографом</h1>
+
+    <div class="chat-container block-rounded">
+        <div class="chat-messages">
+            {% for msg in chat_messages %}
+                <div class="message-bubble {% if msg.user == request.user %}message-self{% else %}message-other{% endif %}">
+                    <div class="message-author">{{ msg.user.username }}</div>
+                    <div class="message-text">{{ msg.text }}</div>
+                    <div class="message-time">{{ msg.created_at|date:"H:i" }}</div>
+                </div>
+            {% empty %}
+                <p class="chat-empty">Пока нет сообщений. Напишите первым!</p>
+            {% endfor %}
+            <div id="end-of-chat"></div>
+        </div>
+
+        <form method="post" class="chat-input-capsule">
+            {% csrf_token %}
+            {{ form.text }}
+            <button type="submit" class="btn-send">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <script>document.getElementById('end-of-chat').scrollIntoView();</script>
+{% endblock %}

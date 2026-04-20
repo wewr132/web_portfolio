@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_class %}page-home{% endblock %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <div class="hero-parallax" {% if site_info.slogan_bg %}style="background-image: url('{{ site_info.slogan_bg.url }}');"{% else %}style="background-color: #333;"{% endif %}>
+        <h1>{{ site_info.slogan }}</h1>
+    </div>
+
+    <main class="home-content">
+        <div class="content-inner">
+            <h2>Последние работы</h2>
+            <div class="photo-grid">
+                {% for photo in photos %}
+                    <img src="{{ photo.img.url }}" alt="{{ photo.title }}" class="photo-sharp photo-grid__img lightbox-trigger">
+                {% endfor %}
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{% url 'gallery:portfolio' %}" class="btn-link">Смотреть всё портфолио</a>
+            </div>
+
+            {% if site_info and site_info.about_text %}
+            <section class="home-about">
+                <h2 class="section-title">Обо мне</h2>
+                <div class="about-flex">
+                    <div class="about-image">
+                        {% if site_info.about_photo %}
+                            <img src="{{ site_info.about_photo.url }}" alt="Фотограф" class="photo-sharp lightbox-trigger">
+                        {% endif %}
+                    </div>
+                    <div class="about-content">
+                        <ul>
+                            {{ site_info.about_text|safe }}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
+        </div>
+    </main>
+
+    <section class="home-contact-cta">
+        <h2>Связаться со мной</h2>
+        <p>Напишите мне свой вопрос и я свяжусь с вами в ближайшее время.</p>
+        <a href="{% url 'chat:room' %}" class="btn-outline">Написать в чат</a>
+    </section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+
+    <main class="portfolio-page">
+        <h2 class="portfolio-title">Портфолио</h2>
+
+        <div class="category-filter-wrapper">
+            <div class="category-filter" id="filter-container">
+                <a href="{% url 'gallery:portfolio' %}" hx-get="{% url 'gallery:portfolio' %}" hx-target="#photo-container" hx-push-url="true" class="filter-btn{% if not current_category %} active{% endif %}">Все</a>
+                {% for cat in categories %}
+                    <a href="{% url 'gallery:category_filter' cat.slug %}" hx-get="{% url 'gallery:category_filter' cat.slug %}" hx-target="#photo-container" hx-push-url="true" class="filter-btn{% if current_category == cat.slug %} active{% endif %}">{{ cat.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="photo-container">
+            {% include 'gallery/partials/photo_list.html' %}
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('filter-container').addEventListener('click', function(e) {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,178 @@
+.reviews-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+/* Сетка карточек отзывов */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Карточка отзыва */
+.review-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.review-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.review-rating {
+    color: #f39c12;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
+
+.review-body {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Форма добавления отзыва */
+.review-form-container {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.review-form-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Выпадающий список оценки — стиль как в навигации */
+.form-select-rating {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-select-rating:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.form-select-rating option {
+    padding: 8px;
+}
+
+/* Поле ввода текста */
+.form-control-text {
+    width: 100%;
+    height: 150px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.6;
+    resize: vertical;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.form-control-text:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.form-control-text::placeholder {
+    color: gray;
+}
+
+/* Стилизация кнопки */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #555;
+}

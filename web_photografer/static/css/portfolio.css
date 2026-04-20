@@ -1,0 +1,86 @@
+.portfolio-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.portfolio-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Навигация "Таблетка" */
+.category-filter-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.category-filter {
+    display: inline-flex;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    padding: 5px;
+    gap: 5px;
+    overflow-x: auto;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    color: #000;
+}
+
+/* Активная категория */
+.filter-btn.active {
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Masonry Сетка (Кирпичная кладка) */
+.masonry-grid {
+    column-count: 1;
+    column-gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1440px) {
+    .masonry-grid {
+        column-count: 4;
+    }
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    background-color: #eee;
+}

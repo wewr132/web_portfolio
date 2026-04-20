@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="border: 2px solid orange; padding: 15px;">
+        <h2>Оставить отзыв</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить на модерацию</button>
+        </form>
+    </div>
+{% endblock %}

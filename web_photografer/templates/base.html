@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Портфолио фотографа{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body class="{% block body_class %}page-default{% endblock %}">
+    {% if messages %}
+        <div class="toast-container">
+            {% for message in messages %}
+                <div class="toast" onclick="this.style.display='none'" title="Нажмите, чтобы закрыть">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="{% url 'gallery:home' %}">Главная</a>
+            <a href="{% url 'gallery:portfolio' %}">Портфолио</a>
+            <a href="{% url 'services:review_list' %}">Отзывы</a>
+            <details class="dropdown dropdown-left">
+                <summary>Заказы</summary>
+                <div class="dropdown-menu">
+                    <a href="{% url 'services:list' %}">Мои заказы</a>
+                    <a href="{% url 'services:create' %}">Сделать заказ</a>
+                </div>
+            </details>
+        </div>
+
+        <div class="navbar-user">
+            <details class="dropdown">
+                <summary>
+                    {% if request.user.is_authenticated %}
+                        {{ request.user.username }}
+                    {% else %}
+                        Гость
+                    {% endif %}
+                </summary>
+                <div class="dropdown-menu">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'users:profile' %}">Профиль</a>
+                        <a href="{% url 'chat:room' %}">Чат</a>
+                        <form action="{% url 'users:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Выход</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'users:login' %}">Вход</a>
+                        <a href="{% url 'users:register' %}">Регистрация</a>
+                    {% endif %}
+                </div>
+            </details>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    {% if site_info %}
+        <footer class="footer">
+            <div>
+                {% if site_info.vk %}
+                    <a href="{{ site_info.vk }}" target="_blank">ВКонтакте</a>
+                {% endif %}
+                {% if site_info.tg %}
+                    <a href="{{ site_info.tg }}" target="_blank">Telegram</a>
+                {% endif %}
+                {% if site_info.inst %}
+                    <a href="{{ site_info.inst }}" target="_blank">Instagram</a>
+                {% endif %}
+                {% if site_info.email %}
+                    <span>{{ site_info.email }}</span>
+                {% endif %}
+            </div>
+        </footer>
+    {% endif %}
+
+    <!-- Модальный просмотрщик изображений -->
+    <div id="simple-modal" class="hidden">
+        <img id="modal-img" src="" alt="View">
+    </div>
+
+    <script>
+        document.addEventListener('click', function(e) {
+            // Открытие
+            if (e.target.matches('.lightbox-trigger')) {
+                const modal = document.getElementById('simple-modal');
+                const modalImg = document.getElementById('modal-img');
+                modalImg.src = e.target.src;
+                modal.classList.remove('hidden');
+            }
+            // Закрытие при клике на фон или саму картинку
+            else if (e.target.closest('#simple-modal')) {
+                document.getElementById('simple-modal').classList.add('hidden');
+                document.getElementById('modal-img').src = "";
+            }
+        });
+    </script>
+</body>
+</html>

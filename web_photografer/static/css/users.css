@@ -1,0 +1,133 @@
+/* ===========================
+   СТРАНИЦА ПРОФИЛЯ
+   =========================== */
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Контейнер профиля */
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background: #ffffff;
+    padding: 35px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Аватар */
+.profile-avatar-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ссылка «Сменить пароль» */
+.btn-link-outline {
+    display: inline-block;
+    border: 1px solid #007bff;
+    padding: 8px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-link-outline:hover {
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Форма профиля */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.profile-form p {
+    margin-bottom: 18px;
+}
+
+.profile-form label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="file"],
+.profile-form input[type="password"],
+.profile-form textarea,
+.profile-form select {
+    width: 100%;
+    padding: 10px 14px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus,
+.profile-form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
+}
+
+.profile-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.profile-form input[type="file"] {
+    padding: 8px;
+    background: #f8f9fa;
+}
+
+/* Help text */
+.profile-form .helptext {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Кнопка сохранения */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background: #555;
+}
