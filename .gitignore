@@ -1,0 +1,32 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# === Django ===
+db.sqlite3
+*.log
+local_settings.py
+# Игнорируем папку со всеми загруженными фото
+media/
+
+# === Окружение ===
+venv/
+env/
+.env
+
+# === Статика (если делал collectstatic) ===
+static_root/
+staticfiles/
+
+# === IDE & OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Прочее ===
+*.bak
+*.swp
